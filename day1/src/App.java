@@ -1,25 +1,16 @@
-package en10dre;
-
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.InputStream;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
+        String filePath = "../puzzle_input";
         int floor = 0;
         int position = 0;
         boolean firstEnteredBasement = false; // To track if the basement is entered
 
         // Load the file from resources using the class loader
-        try (InputStream inputStream = App.class.getClassLoader().getResourceAsStream("puzzle_input");
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-
-            if (inputStream == null) {
-                System.out.println("File not found!");
-                return;
-            }
-
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
             // Process each line of the file
